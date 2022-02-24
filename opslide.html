@@ -1,1 +1,46 @@
-test
+<html>
+<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
+<style>
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: black;
+}
+iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border:none;
+}
+</style>
+ <script>
+     let urls = [
+        'https://openprocessing.org/sketch/1480606/embed/?plusEmbedHash=ZGFhMjFjYzA5YjU1MTFkNDJlNTYxZDYzOWU3NTNiZjM3NjA0ZmQxNTYzZWRiNjg0NTFmOTM4ZjJjOTM2NmQ0ZThmMTVmMDQwYjZhNmY2ZTlmNjNiN2UwM2JlZjU0ZGJhNmJiOGY3ZmYxMTlkMzgyYTg4MTNjMzFmNmUzNDA2OGVueXY1UCtHRHVrQ3UzYnM5WDB6dGlnTlkzVnJyU3llcGZib2IzdEZzTkVUd2lSOHVIWldmbGhmTHJpc2xPWlltSzV2RC9MUzBzdnJBa2NWYnMvbXRMQT09&plusEmbedTitle=true&plusEmbedFullscreen=true',
+        'https://openprocessing.org/sketch/1483214/embed/?plusEmbedHash=NWU1NmExNDI2YzRmZTQ3YjY0NmJlODZhZjdiODVhYTEzNjU0ZDEwYzcxMTIxNjA4NzkwMjQyMzEwNDk4OWZmMDg0MWI1ZGZkZTY3MDdiYmY1ZmM3ZGYwYWM2NTAyYzc5OTIwYjUyYTc1ZDU3MGIyNzUxN2EyMjAyM2I0MzUyYmJtc3MrbElKYldFY2Y3SGdHcnE3Ymk2bXVrZ3ZXRDZtOC9xUlFMeFl6dXp6VUNWQmFEUGEvSnlBcmFlOHlTT3gwMEJycSt6YlJubnYvblh4bSt2SVhsQT09&plusEmbedTitle=true&plusEmbedFullscreen=true',
+        'https://openprocessing.org/sketch/1487760/embed/?plusEmbedHash=M2YxZmYyOGE0MzEyYmU5MjMyOWYxYjUyN2VlNTgzOTI0Njg1ODMyY2EwNjRmM2Q2OTc5YmVkZTY5OTc3ZDZiM2FiMTFlZjVjMjcyYWMwODRjZjU1NjhmY2UwZTE4Y2IxMmU0YmYzYTk3OTQzMDRhNDhiNmJkYTNjMzJlMzczOTFxRkY4L1I4TWNaRStubW4zL25QanFuU2M1VjZOQ0FWVDJhNVRGbWRjclZkSll3SjJGcU8yYjVPV0JNcGhtRGNNd1pHV2F0YThlclpKZkZUd1pXNzJCZz09&plusEmbedTitle=true&plusEmbedFullscreen=true', 
+    ];
+     let i = 0;
+     let nextArt = () => {
+        console.log(i);
+        $("#main-contents").fadeTo(800,0.05,function(){
+            console.log(urls[i % urls.length]);
+			$("#iframe").attr("src",urls[i++ % urls.length]).load(function() {
+				$("#main-contents").fadeTo(800,1);
+			});
+		});
+     }
+     $(document).ready(() => {
+        nextArt();
+        setInterval(nextArt, 30000);
+    });
+     
+     
+</script>
+<body>
+<div id="main-contents">
+<iframe id=iframe></iframe>
+</div>
+</body>
+</html>
